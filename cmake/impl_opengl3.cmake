@@ -38,8 +38,8 @@ else()
 endif()
 
 list(APPEND IMGUI_HEADERS
-    examples/imgui_impl_opengl3.h
+    backends/imgui_impl_opengl3.h
 )
 list(APPEND IMGUI_SOURCE
-    examples/imgui_impl_opengl3.cpp
+    backends/imgui_impl_opengl3.cpp
 )

@@ -4,13 +4,7 @@ if(POLICY CMP0074)
     cmake_policy(SET CMP0074 NEW)
 endif()
 
-include(${CMAKE_CURRENT_LIST_DIR}/cmake/Hunter/HunterGate.cmake)
-HunterGate(
-    URL "https://github.com/ruslo/hunter/archive/v0.23.179.tar.gz"
-    SHA1 "21b2f139feb9f3c37e367750013aee15e1c45355"
-)
-
-project(imgui VERSION 1.70)
+project(imgui VERSION 1.82.1) # using patch .1 to map docking branch
 
 if(MSVC)
     #setup pdb info
@@ -28,15 +22,17 @@ set(IMGUI_IMPL_LIBRARIES)
 set(IMGUI_IMPL_EXAMPLES)
 
 option(IMGUI_IMPL_ALLEGRO5 "Include Allegro5 renderer" OFF)
-option(IMGUI_IMPL_MARMALADE "Include Marmalade renderer" OFF)
+option(IMGUI_IMPL_ANDROID "Include Android renderer" OFF)
 option(IMGUI_IMPL_DIRECTX9 "Include DirectX 9 renderer" OFF)
 option(IMGUI_IMPL_DIRECTX10 "Include DirectX 10 renderer" OFF)
 option(IMGUI_IMPL_DIRECTX11 "Include DirectX 11 renderer" OFF)
 option(IMGUI_IMPL_DIRECTX12 "Include DirectX 12 renderer" OFF)
+option(IMGUI_IMPL_MARMALADE "Include Marmalade renderer" OFF)
 option(IMGUI_IMPL_OPENGL2 "Include Opengl 2 renderer" OFF)
 option(IMGUI_IMPL_OPENGL3 "Include Opengl 3 renderer" OFF)
 option(IMGUI_IMPL_VULKAN "Include Vulkan renderer" OFF)
 option(IMGUI_IMPL_METAL "Include Metal renderer" OFF)
+option(IMGUI_IMPL_WGPU "Include WGPU renderer" OFF)
 
 option(IMGUI_IMPL_GLFW "Include GLFW window manager" OFF)
 option(IMGUI_IMPL_GLUT "Include GLUT window manager" OFF)
@@ -61,9 +57,11 @@ set(IMGUI_SOURCE
     imgui_demo.cpp
     imgui_draw.cpp
     imgui_widgets.cpp
+    imgui_tables.cpp
 )
 
 include(cmake/impl_allegro5.cmake)
+include(cmake/impl_android.cmake)
 include(cmake/impl_marmalade.cmake)
 include(cmake/impl_directx9.cmake)
 include(cmake/impl_directx10.cmake)
@@ -72,6 +70,7 @@ include(cmake/impl_directx12.cmake)
 include(cmake/impl_opengl2.cmake)
 include(cmake/impl_opengl3.cmake)
 include(cmake/impl_vulkan.cmake)
+include(cmake/impl_wgpu.cmake)
 
 include(cmake/impl_glfw.cmake)
 include(cmake/impl_glut.cmake)

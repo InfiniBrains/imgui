@@ -8,9 +8,9 @@ if(IMGUI_IMPL_GLFW)
     list(APPEND IMGUI_IMPL_LIBRARIES ${IMGUI_IMPL_LIBRARIES} glfw)
 
     list(APPEND IMGUI_HEADERS
-        examples/imgui_impl_glfw.h
+        backends/imgui_impl_glfw.h
 )
     list(APPEND IMGUI_SOURCE
-        examples/imgui_impl_glfw.cpp
+        backends/imgui_impl_glfw.cpp
 )
 endif()
